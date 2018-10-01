@@ -1,0 +1,4 @@
+* { padding: 0; margin: 0; }
+#duck { text-align: center; font: 1.25em black montserrat, sans-serif; }
+.buck { text-align: center; font: 1em black montserrat, sans-serif; }
+canvas { background: #eee; display: block; margin: 0 auto; }
