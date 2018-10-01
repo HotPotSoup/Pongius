@@ -1,16 +1,24 @@
-   var canvas = document.getElementById("myCanvas");
+    var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
-    var ballRadius = 10;
+    var ballRadius = 15;
     var x = canvas.width/2;
-    var y = canvas.height-30;
+    var y = canvas.height/2;
     var dx = 2;
     var dy = -2;
     var paddleHeight = 75;
     var paddleWidth = 10;
+    var paddleX = 0;
     var paddleY = canvas.height/2 - paddleHeight/2;
     var downPressed = false;
     var upPressed = false;
     var score = 0;
+    var img = new Image();
+    var imgp = new Image();
+
+    img.src = 'ball.png';
+    imgp.src = 'paddle.png'
+
+
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
     function keyDownHandler(e) {
@@ -31,14 +39,16 @@
     }
     function drawBall() {
         ctx.beginPath();
-        ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+        // ctx.arc(x, y, ballRadius, 0, Math.PI*2);
+        ctx.drawImage(img, x, y);
         ctx.fillStyle = "#0095DD";
         ctx.fill();
         ctx.closePath();
     }
     function drawPaddle() {
         ctx.beginPath();
-        ctx.rect(0, paddleY, paddleWidth, paddleHeight);
+        //ctx.rect(0, paddleY, paddleWidth, paddleHeight);
+        ctx.drawImage(imgp, paddleX, paddleY);
         ctx.fillStyle = "#0095DD";
         ctx.fill();
         ctx.closePath();
