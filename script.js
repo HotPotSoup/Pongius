@@ -1,6 +1,6 @@
     var canvas = document.getElementById("myCanvas");
     var ctx = canvas.getContext("2d");
-    var ballRadius = 15;
+    var ballRadius = 10;
     var x = canvas.width/2;
     var y = canvas.height/2;
     var dx = 2;
@@ -35,20 +35,20 @@
         }
     }
     function drawBall() {
-        ctx.beginPath();
+        // ctx.beginPath();
         // ctx.arc(x, y, ballRadius, 0, Math.PI*2);
-        ctx.drawImage(img, x, y);
-        ctx.fillStyle = "#0095DD";
-        ctx.fill();
-        ctx.closePath();
+        ctx.drawImage(img, x - ballRadius, y - ballRadius);
+        // ctx.fillStyle = "#0095DD";
+        // ctx.fill();
+        // ctx.closePath();
     }
     function drawPaddle() {
-        ctx.beginPath();
-        //ctx.rect(0, paddleY, paddleWidth, paddleHeight);
+        // ctx.beginPath();
+        // ctx.rect(0, paddleY, paddleWidth, paddleHeight);
         ctx.drawImage(imgp, paddleX, paddleY);
-        ctx.fillStyle = "#0095DD";
-        ctx.fill();
-        ctx.closePath();
+        // ctx.fillStyle = "#0095DD";
+        // ctx.fill();
+        // ctx.closePath();
     }
     function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -61,14 +61,14 @@
         if(x + dx > canvas.width-ballRadius) {
             dx = -dx;
         }
-        else if(x + dx < ballRadius) {
+        else if(x + dx < paddleWidth + ballRadius * 2) {
             if(y > paddleY && y < paddleY + paddleHeight) {
                 dx = -dx;
                 score++;
                 dx = dx + 0.25;
                 dy = dy + 0.25;
             }
-            else {
+            else if (x + dx < ballRadius) {
                 clearInterval(game);
                 alert("GAME OVER. SCORE = " + score);
                 document.location.reload();
