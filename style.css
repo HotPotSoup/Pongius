@@ -9,25 +9,25 @@
     overflow: hidden;
     z-index: -99;
 }
-#duck { 
-    text-align: center; 
+#duck {
+    text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-style: normal;
     font-size: 4em;
-    color: rgb(255, 255, 255); 
+    color: rgb(255, 255, 255);
 }
-.buck { 
-    text-align: center; 
+.buck {
+    text-align: center;
     font-family: Arial, Helvetica, sans-serif;
     font-style: normal;
     font-size: 1em;
     color: rgb(255, 255, 255);
 }
-canvas { 
+#myCanvas {
     background-image: url("canvas.gif");
     background-repeat: no-repeat;
     background-size: 100% 100%;
-    display: block; 
-    margin: 0 auto; 
+    display: block;
+    margin: 0 auto;
     border: 7px solid #a40afd;
 }
