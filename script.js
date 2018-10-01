@@ -14,11 +14,8 @@
     var score = 0;
     var img = new Image();
     var imgp = new Image();
-
     img.src = 'ball.png';
-    imgp.src = 'paddle.png'
-
-
+    imgp.src = 'paddle.png';
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
     function keyDownHandler(e) {
