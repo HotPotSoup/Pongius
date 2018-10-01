@@ -58,10 +58,10 @@
         }
         else if(x + dx < paddleWidth + ballRadius * 2) {
             if(y > paddleY && y < paddleY + paddleHeight) {
-                x = paddleWidth + ballRadius * 2 + 1; // fix hit detection issues giving high scores
+                x = paddleWidth + ballRadius * 2 + 0.25; // fix hit detection issues giving high scores
                 dx = -dx;
                 score++;
-                
+
                 // makes ball faster after each hit
                 dx = dx + 0.25;
                 dy = dy + 0.25;
@@ -78,7 +78,7 @@
         else if(upPressed && paddleY > 0) {
             paddleY -= 7;
         }
-        
+
         // ball movement
         x += dx;
         y += dy;
