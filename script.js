@@ -3,6 +3,7 @@
     var ballRadius = 10;
     var x = canvas.width/2;
     var y = canvas.height/2;
+    // speed
     var dx = 2;
     var dy = -2;
     var paddleHeight = 75;
@@ -12,12 +13,14 @@
     var downPressed = false;
     var upPressed = false;
     var score = 0;
-    var img = new Image();
-    var imgp = new Image();
+    var img = new Image(); // ball image
+    var imgp = new Image(); // paddle image
     img.src = 'ball.png';
     imgp.src = 'paddle.png';
     document.addEventListener("keydown", keyDownHandler, false);
     document.addEventListener("keyup", keyUpHandler, false);
+
+    // controls
     function keyDownHandler(e) {
         if(e.keyCode == 40) {
             downPressed = true;
@@ -34,21 +37,13 @@
             upPressed = false;
         }
     }
+
+    // game
     function drawBall() {
-        // ctx.beginPath();
-        // ctx.arc(x, y, ballRadius, 0, Math.PI*2);
         ctx.drawImage(img, x - ballRadius, y - ballRadius);
-        // ctx.fillStyle = "#0095DD";
-        // ctx.fill();
-        // ctx.closePath();
     }
     function drawPaddle() {
-        // ctx.beginPath();
-        // ctx.rect(0, paddleY, paddleWidth, paddleHeight);
         ctx.drawImage(imgp, paddleX, paddleY);
-        // ctx.fillStyle = "#0095DD";
-        // ctx.fill();
-        // ctx.closePath();
     }
     function draw() {
         ctx.clearRect(0, 0, canvas.width, canvas.height);
@@ -63,15 +58,18 @@
         }
         else if(x + dx < paddleWidth + ballRadius * 2) {
             if(y > paddleY && y < paddleY + paddleHeight) {
+                x = paddleWidth + ballRadius * 2 + 1; // fix hit detection issues giving high scores
                 dx = -dx;
                 score++;
+                
+                // makes ball faster after each hit
                 dx = dx + 0.25;
                 dy = dy + 0.25;
             }
             else if (x + dx < ballRadius) {
                 clearInterval(game);
                 alert("GAME OVER. SCORE = " + score);
-                document.location.reload();
+                document.location.reload(); // resets game
             }
         }
         if(downPressed && paddleY < canvas.height-paddleHeight) {
@@ -80,6 +78,8 @@
         else if(upPressed && paddleY > 0) {
             paddleY -= 7;
         }
+        
+        // ball movement
         x += dx;
         y += dy;
     }
