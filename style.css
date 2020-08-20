@@ -1,11 +1,5 @@
 * { padding: 0; margin: 20; }
 
-html{
-    overflow-y: hidden !important; 
-}
-body{
-    overflow-y: hidden !important;
-}
 #background {
     position: absolute;
     top: 0px;
